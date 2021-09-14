@@ -1,0 +1,88 @@
+openapi: 3.0.0
+info:
+    title: Connexion Homepage API
+    description: An API for returning the content on the homepage as a JSON response
+    version: "1.0.0"
+paths:
+    /homepage/feed:
+        get:
+            summary: Returns a JSON response of categories and articles
+            responses:
+                '200':
+                    description: A JSON array of categories and articles
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Homepage'
+                '404':
+                    description: Homepage not found
+                '500':
+                    description: Server failed to properly generate homepage response
+components:
+    schemas:
+        Homepage:
+            type: object
+            properties:
+                remoteId:
+                    type: string
+                    x-faker: datatype.uuid
+                categories:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Category'
+        Category:
+            type: object
+            properties:
+                remoteId:
+                    type: string
+                    x-faker: datatype.uuid
+                name:
+                    type: string
+                    x-faker: lorem.word
+                articles:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Article'
+        Article:
+            type: object
+            properties:
+                id:
+                    type: string
+                    x-faker: datatype.uuid
+                title:
+                    type: string
+                    x-faker: lorem.sentence
+                shortTitle:
+                    type: string
+                    x-faker: lorem.words
+                summary:
+                    type: string
+                    x-faker: lorem.paragraph
+                body:
+                    type: string
+                    x-faker: lorem.paragraphs
+                url:
+                    type: string
+                    x-faker: internet.url
+                image:
+                    $ref: '#/components/schemas/Image'
+                thumbnailImage:
+                    $ref: '#/components/schemas/Image'
+                author:
+                    type: object
+                    properties:
+                        name:
+                            type: string
+                    x-faker: name.findName
+                publishDate:
+                    type: integer
+                    x-faker: date.datetime
+        Image:
+            type: object
+            properties:
+                name:
+                    type: string
+                    x-faker: word
+                imageUrl:
+                    type: string
+                    x-faker: image.imageUrl
