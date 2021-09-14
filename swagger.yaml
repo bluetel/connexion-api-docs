@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-    title: Connexion Homepage API
-    description: An API for returning the content on the homepage as a JSON response
+    title: Connexion Data API
+    description: An API for returning content from connexionfrance.com as a JSON response
     version: "1.0.0"
 paths:
     /homepage/feed:
