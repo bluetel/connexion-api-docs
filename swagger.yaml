@@ -25,7 +25,7 @@ components:
             properties:
                 remoteId:
                     type: string
-                    x-faker: datatype.uuid
+                    x-faker: random.uuid
                 categories:
                     type: array
                     items:
@@ -35,7 +35,7 @@ components:
             properties:
                 remoteId:
                     type: string
-                    x-faker: datatype.uuid
+                    x-faker: random.uuid
                 name:
                     type: string
                     x-faker: lorem.word
@@ -48,7 +48,7 @@ components:
             properties:
                 id:
                     type: string
-                    x-faker: datatype.uuid
+                    x-faker: random.uuid
                 title:
                     type: string
                     x-faker: lorem.sentence
